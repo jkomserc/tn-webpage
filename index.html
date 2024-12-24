@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>給特別的你的小程式</title>
+    <style>
+        /* 基本樣式 */
+        body {
+            text-align: center;
+            font-family: Arial, sans-serif;
+            background: linear-gradient(to bottom, #fdf2f8, #ffe6f0);
+        }
+
+        h1 {
+            color: #ff69b4;
+        }
+
+        .button {
+            margin-top: 30px;
+            padding: 12px 24px;
+            font-size: 16px;
+            cursor: pointer;
+            background-color: #ff69b4;
+            color: white;
+            border: none;
+            border-radius: 8px;
+        }
+
+        .button:hover {
+            background-color: #ff1493;
+        }
+
+        #message {
+            margin-top: 30px;
+            font-size: 20px;
+        }
+
+        .image-container, .video-container {
+            margin-top: 30px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        img, iframe {
+            max-width: 80%;
+            border-radius: 12px;
+            box-shadow: 0 8px 16px rgba(0,0,0,0.2);
+            display: none;
+        }
+
+        iframe {
+            width: 80%;
+            height: 400px;
+            border: none;
+        }
+    </style>
+    <script>
+        // 檢查名字
+        function checkName() {
+            let crushName = prompt("嗨！請輸入你的名字：");
+
+            // 標準化輸入（去除空格並轉換為小寫）
+            crushName = crushName ? crushName.trim().toLowerCase() : "";
+
+            // 第一組名字匹配 (王弈騰、弈騰、小寶)
+            if (crushName === "王弈騰" || crushName === "弈騰" || crushName === "小寶") {
+                alert("🎉 恭喜！你成功解鎖了可以愛模式！");
+                document.getElementById("message").innerHTML = `
+                    💖 今天的你，特別可愛！<br>
+                    ✨ 很抱歉打錯你的名字！<br>
+                    😢 我真的不是故意的！
+                `;
+                document.getElementById("image").style.display = "block";
+                document.getElementById("video").style.display = "none";
+            }
+            // 第二組名字匹配 (林哲輝、哲輝、大隻)
+            else if (crushName === "林哲輝" || crushName === "哲輝" || crushName === "大隻") {
+                alert("🎁 恭喜！觸發 VIP 神秘驚喜！");
+                document.getElementById("message").innerHTML = `
+                    🥳 恭喜 VIP，您已解鎖神秘影片！<br>
+                    🎬 請欣賞特別為您準備的影片。
+                `;
+                document.getElementById("video").style.display = "block";
+                document.getElementById("image").style.display = "none";
+            }
+            // 其他名字
+            else {
+                alert("😠 這.....這賤人是誰！？");
+                document.getElementById("message").innerHTML = `
+                    💡 小提示：換個名字再試一次嘛！
+                `;
+                document.getElementById("image").style.display = "none";
+                document.getElementById("video").style.display = "none";
+            }
+        }
+    </script>
+</head>
+<body>
+    <h1>🎁 嘿，小寶 🎁</h1>
+    <p>點擊下方按鈕，看看我準備了什麼給你吧！</p>
+    <button class="button" onclick="checkName()">大力的 Touch 我</button>
+    <p id="message"></p>
+    <div class="image-container">
+        <img id="image" src="https://i.ibb.co/HN2KjxV/Tn.png" alt="TN">
+    </div>
+    <div class="video-container">
+        <iframe id="video" src="https://drive.google.com/file/d/1y0auGfrT0mUUrqiZik4aGrfykglkW4Nd/preview" allow="autoplay" allowfullscreen></iframe>
+    </div>
+</body>
+</html>
